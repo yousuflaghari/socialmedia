@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addPosts, addUsers } from "./redux/actions/action";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Postpage from "./pages/postspage";
+import Home from "./pages/home";
+import UsersPage from "./components/UsersPage";
+import PostDetail from "./components/postdetail";
+import UserDetails from "./components/UserDetails";
+const App = () => {
+  const dispatch = useDispatch();
 
-function App() {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const postsResponse = await fetch("https://dummyjson.com/posts");
+        const data = await postsResponse.json();
+        dispatch(addPosts(data.posts));
+
+        const usersResponse = await fetch("https://dummyjson.com/users");
+        const usersdata = await usersResponse.json();
+        dispatch(addUsers(usersdata.users));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/postspage" element={<Postpage />} />
+        <Route path="/post/:postId" element={<PostDetail />} />
+
+        <Route path="/Userspage" element={<UsersPage />} />
+        <Route path="/User/:userId" element={<UserDetails />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
