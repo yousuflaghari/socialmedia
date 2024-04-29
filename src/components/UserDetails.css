@@ -1,15 +1,20 @@
 .user-detail {
-  max-width: 800px;
-  margin: 0 auto;
+  display: flex;
+  max-width: 100%;
   padding: 20px;
+}
+.main {
+  display: flex;
 }
 
 .navigation ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  margin-top: 20px;
+  padding: 2px;
 }
-
+.post-container {
+  margin-left: 155px;
+}
 .navigation li {
   display: flex;
   flex-direction: column;
@@ -17,14 +22,41 @@
 }
 
 .navigation a {
+  margin-top: 6px;
   text-decoration: none;
   color: #333;
 }
-
-.header {
+.btn {
+  background-color: #c8d3de;
+  margin-left: 72px;
+}
+.main-profile {
+  background-color: #394b70;
+  width: 100%;
+}
+.header1 {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+}
+.empty-div {
+  background-color: #eeecec;
+  width: 20%;
+}
+.firstname-main {
+  color: #fff;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  background-color: #eeecec;
 }
 
 .avatar {
@@ -83,4 +115,15 @@
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
+}
+.post-detail {
+  display: flex;
+
+  margin-top: 50px;
+}
+.avatar-main {
+  margin-left: 130px;
+}
+.detail {
+  margin-right: 155px;
 }
