@@ -6,8 +6,6 @@ const UsersPage = () => {
   return (
     <>
       <div className="user-page">
-        <h1>Users</h1>
-        <h2>User page main hain </h2>
         <div className="user-list">
           {users?.map((user) => (
             <User key={user.id} user={user} />

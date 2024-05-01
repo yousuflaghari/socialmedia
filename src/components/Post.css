@@ -1,9 +1,9 @@
 .post-container {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 20px;
+  border-radius: 10px;
   margin-bottom: 20px;
+  width: 400px;
+  margin-left: 400px;
+  border: 1px solid;
 }
 .info {
   margin: 0px;
@@ -11,8 +11,11 @@
 .firstname {
   margin: 0px;
 }
+.post-email {
+  margin: 0px;
+}
 
-.header {
+.post-header {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -27,7 +30,8 @@
 
 .user-info {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 .follow-button {
@@ -43,28 +47,65 @@
 .post-time {
   font-size: 14px;
   color: #999;
-  margin: 0px;
+  margin: 7px;
+  margin-left: 4px;
 }
 
 .post-content {
   margin-bottom: 10px;
 }
+.likes-shares {
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+  margin: 7px;
+}
 
+.likes,
+.shares,
+.comments {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.likes h5,
+.shares h5,
+.comments h5 {
+  margin: 0;
+}
+
+.likes p,
+.shares p,
+.comments p {
+  margin: 0;
+  font-size: 14px;
+  color: #999;
+  margin-left: 5px;
+}
 .post-body {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+  margin: 5px;
 }
 
 .post-actions {
   display: flex;
+  margin-top: -5px;
+  justify-content: space-between;
+}
+.span {
+  color: #1877f2;
+}
+.tags {
+  margin: 3px;
 }
 
 .like-button,
 .share-button,
 .comment-button {
-  background-color: #f0f2f5;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
-  margin-right: 10px;
   cursor: pointer;
+  color: rgb(252, 69, 69);
 }

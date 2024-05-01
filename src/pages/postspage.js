@@ -7,6 +7,17 @@ const Postpage = () => {
 
   return (
     <div>
+      <h1
+        className="heading-post"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        Posts
+      </h1>
+
       {posts.map((post) => {
         const user = users.find((user) => user.id === post.id);
         return <Post key={post.id} post={post} user={user} />;

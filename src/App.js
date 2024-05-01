@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addPosts, addUsers } from "./redux/actions/action";
+import { addPosts, addUsers, comments } from "./redux/actions/action";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Postpage from "./pages/postspage";
 import Home from "./pages/home";
@@ -20,6 +20,10 @@ const App = () => {
         const usersResponse = await fetch("https://dummyjson.com/users");
         const usersdata = await usersResponse.json();
         dispatch(addUsers(usersdata.users));
+
+        const responsecomments = await fetch("https://dummyjson.com/comments");
+        const commentdata = await responsecomments.json();
+        dispatch(comments(commentdata.comments));
       } catch (error) {
         console.error("Error fetching data:", error);
       }

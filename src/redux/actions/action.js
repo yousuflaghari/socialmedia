@@ -1,5 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
-
 export const addUsers = (users) => {
   return {
     type: "ADD_USERS",
@@ -14,13 +12,13 @@ export const addPosts = (posts) => {
 };
 export const diff_user = (data) => {
   return {
-    type: "diff_user",
+    type: "DIFF_USER",
     payload: data,
   };
 };
-export const addcomments = (comments) => {
+export const comments = (comments) => {
   return {
-    type: "Add-Comments",
+    type: "COMMENTS",
     payload: comments,
   };
 };

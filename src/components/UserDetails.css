@@ -3,16 +3,12 @@
   max-width: 100%;
   padding: 20px;
 }
-.main {
-  display: flex;
-}
-
 .navigation ul {
   list-style: none;
   margin-top: 20px;
   padding: 2px;
 }
-.post-container {
+.container {
   margin-left: 155px;
 }
 .navigation li {
@@ -48,6 +44,7 @@
   font-size: xx-large;
   display: flex;
   align-items: center;
+  margin-left: 40px;
 }
 
 .header {
@@ -66,7 +63,7 @@
   margin-right: 15px;
 }
 
-.user-info {
+.userdetail-info {
   display: flex;
   align-items: center;
 }
@@ -102,28 +99,42 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.like-div,
+.share-div,
+.messenger-div {
+  display: flex;
+  margin-left: 20px;
+  color: aliceblue;
+}
 
 .buttons {
-  margin-top: 20px;
+  margin-top: 0px;
+  display: flex;
+  margin-bottom: 16px;
+}
+.button-name {
+  margin: 0px;
+  margin-left: 9px;
 }
 
-.buttons button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-}
 .post-detail {
   display: flex;
 
   margin-top: 50px;
 }
 .avatar-main {
-  margin-left: 130px;
+  margin-left: 430px;
 }
 .detail {
   margin-right: 155px;
+  margin-left: 30px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.fontidentify {
+  margin-left: 25px;
 }

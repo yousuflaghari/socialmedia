@@ -1,12 +1,22 @@
+import { addComments } from "../actions/action";
+
 const initialState = {
   posts: [],
   users: [],
   data: [],
+  comments: [],
+  addComments: [],
 };
 
 const Reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "Diff_User":
+    case "COMMENTS":
+      return {
+        ...state,
+        comments: action.payload,
+      };
+
+    case "DIFF_USER":
       return {
         ...state,
         data: action.payload,
@@ -20,11 +30,6 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         users: action.payload,
-      };
-    case "Add-Comments":
-      return {
-        ...state,
-        comments: action.payload,
       };
 
     default:
