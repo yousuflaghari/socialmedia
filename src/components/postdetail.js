@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./postdetail.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   useGetPostById,
   useGetUserById,
   useGetCommentbyId,
 } from "../hook/hook";
-import { addUsers, addComments } from "../redux/actions/action";
+import { addUsers } from "../redux/actions/action";
 import Comment from "./comments";
 
 const PostDetail = () => {
@@ -16,40 +16,39 @@ const PostDetail = () => {
   const { post } = useGetPostById(postId);
   const { user } = useGetUserById(postId);
   const { comment, username } = useGetCommentbyId(postId);
-  console.log("matlab ab comment aa rahy hain", comment);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (!user) {
-      const fetchUser = async () => {
-        try {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        if (!user || user.id !== post.userId) {
           const userresponse = await fetch(
             `https://dummyjson.com/users/${post.userId}`
           );
           const data = await userresponse.json();
           dispatch(addUsers(data));
-        } catch (error) {
-          console.error("Error fetching user:", error);
         }
-      };
-      fetchUser();
-    }
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
   }, [user, post.userId, dispatch]);
 
-  if (!post || !user) {
-    return <p>Loading ...</p>;
+  if (isLoading || !post || !user) {
+    return (
+      <div className="loader-container">
+        <div className="loader"></div>
+      </div>
+    );
   }
 
   return (
-    <div className="post-container">
-      <div
-        className="header1"
-        style={{
-          width: "100%",
-          display: "flex",
-          marginBottom: "20px",
-          backgroundColor: "#eeecec",
-        }}
-      >
+    <div className="postdetail-container">
+      <div className="header1">
         <img src={user.image} alt="User Avatar" className="avatar" />
         <div className="info">
           <div className="user-info">

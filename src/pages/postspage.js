@@ -1,22 +1,14 @@
 import React from "react";
 import Post from "../components/Post";
+import "./postpage.css";
 import { useSelector } from "react-redux";
 const Postpage = () => {
   const posts = useSelector((state) => state.posts);
   const users = useSelector((state) => state.users);
 
   return (
-    <div>
-      <h1
-        className="heading-post"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        Posts
-      </h1>
+    <div className="container-postpage">
+      <h1 className="heading-post">Posts</h1>
 
       {posts.map((post) => {
         const user = users.find((user) => user.id === post.id);

@@ -65,7 +65,7 @@ const Post = ({ post, user }) => {
           ))}
         </p>
         <p className="post-time">{formattedDateAndTime}</p>
-        <hr></hr>
+        <hr className="line-seperater"></hr>
         <div className="likes-shares">
           <div className="likes">
             <h5>{post.reactions}</h5>
@@ -80,7 +80,7 @@ const Post = ({ post, user }) => {
             <p>comments</p>
           </div>
         </div>
-        <hr></hr>
+        <hr className="line-seperater"></hr>
         <div className="post-actions">
           <FontAwesomeIcon className="like-button" icon={faThumbsUp} />
           <FontAwesomeIcon className="share-button" icon={faShare} />

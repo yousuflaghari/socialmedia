@@ -2,11 +2,13 @@
   border-radius: 10px;
   margin-bottom: 20px;
   width: 400px;
-  margin-left: 400px;
-  border: 1px solid;
+  border: 1px solid #eaeaea;
 }
 .info {
   margin: 0px;
+}
+.line-seperater {
+  border: 1px solid #eaeaea;
 }
 .firstname {
   margin: 0px;
@@ -47,8 +49,7 @@
 .post-time {
   font-size: 14px;
   color: #999;
-  margin: 7px;
-  margin-left: 4px;
+  padding-left: 10px;
 }
 
 .post-content {
@@ -57,8 +58,7 @@
 .likes-shares {
   display: flex;
   align-items: center;
-  margin-left: 4px;
-  margin: 7px;
+  padding-left: 10px;
 }
 
 .likes,
@@ -85,7 +85,7 @@
 }
 .post-body {
   margin-bottom: 0px;
-  margin: 5px;
+  padding-left: 10px;
 }
 
 .post-actions {
@@ -97,7 +97,7 @@
   color: #1877f2;
 }
 .tags {
-  margin: 3px;
+  padding-left: 10px;
 }
 
 .like-button,
