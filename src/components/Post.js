@@ -7,9 +7,15 @@ import {
   faShare,
   faComment,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { useNavigate } from "react-router-dom";
 const Post = ({ post, user }) => {
-  console.log(user, post);
+  const navigate = useNavigate();
+  const naviagtetouserdetail = (userId) => {
+    navigate(`/users/${userId}`);
+  };
+  const navigateToPostDetail = (postId) => {
+    navigate(`/post/${postId}`);
+  };
   if (!user) {
     return <p>Loading ...</p>;
   }
@@ -46,7 +52,11 @@ const Post = ({ post, user }) => {
 
   return (
     <div className="post-container">
-      <div className="post-header">
+      <div
+        className="post-header"
+        key={user.id}
+        onClick={() => naviagtetouserdetail(user.id)}
+      >
         <img src={user.image} alt="User Avatar" className="avatar" />
         <div className="info">
           <div className="user-info">
@@ -55,7 +65,10 @@ const Post = ({ post, user }) => {
           </div>
         </div>
       </div>
-      <div className="post-content">
+      <div
+        className="post-content"
+        onClick={() => navigateToPostDetail(post.id)}
+      >
         <p className="post-body">{post.body}</p>
         <p className="tags">
           {post.tags.map((tag, i) => (

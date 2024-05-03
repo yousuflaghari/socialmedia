@@ -46,28 +46,81 @@ const PostDetail = () => {
     );
   }
 
+  const currentDateAndTime = new Date();
+
+  const hours = currentDateAndTime.getHours();
+  const minutes = currentDateAndTime.getMinutes();
+  const amOrPm = hours >= 12 ? "PM" : "AM";
+  const formattedHours = hours % 12 || 12;
+
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const month = monthNames[currentDateAndTime.getMonth()];
+  const date = currentDateAndTime.getDate();
+  const year = currentDateAndTime.getFullYear();
+
+  const formattedDateAndTime = `${formattedHours}:${
+    minutes < 10 ? "0" : ""
+  }${minutes} ${amOrPm} - ${month} ${date}, ${year}`;
+
+  console.log(formattedDateAndTime);
   return (
-    <div className="postdetail-container">
-      <div className="header1">
-        <img src={user.image} alt="User Avatar" className="avatar" />
-        <div className="info">
-          <div className="user-info">
-            <h2 className="firstname">{user.firstName}</h2>
-            <button className="follow-button">Follow</button>
+    <div className="postdetail-main">
+      <div className="postdetail-container">
+        <div className="header1">
+          <img src={user.image} alt="User Avatar" className="avatar" />
+          <div className="info">
+            <div className="user-info">
+              <h2 className="firstname">{user.firstName}</h2>
+              <p className="post-email">{user.email}</p>
+            </div>
           </div>
-          <p className="post-time">Posted 2 hours ago</p>
         </div>
-      </div>
-      <div className="post-content">
-        <h2>{post.title}</h2>
-        <p className="post-body">{post.body}</p>
-      </div>
-      <div className="comments-box">
-        {comment ? (
-          <Comment key={comment.id} body={comment.body} username={username} />
-        ) : (
-          <p>No comments</p>
-        )}
+        <div className="post-content">
+          <p className="post-body">{post.body}</p>
+          <p className="tags">
+            {post.tags.map((tag, i) => (
+              <span className="span" key={i}>
+                #{tag}{" "}
+              </span>
+            ))}
+          </p>
+          <p className="post-time">{formattedDateAndTime}</p>
+          <hr className="line-seperater"></hr>
+          <div className="likes-shares">
+            <div className="likes">
+              <h5>{post.reactions}</h5>
+              <p>likes</p>
+            </div>
+            <div className="shares">
+              <h5>20k</h5>
+              <p>shares</p>
+            </div>
+            <div className="comments">
+              <h5>10k</h5>
+              <p>comments</p>
+            </div>
+          </div>
+        </div>
+        <div className="comments-box">
+          {comment ? (
+            <Comment key={comment.id} body={comment.body} username={username} />
+          ) : (
+            <p>No comments</p>
+          )}
+        </div>
       </div>
     </div>
   );

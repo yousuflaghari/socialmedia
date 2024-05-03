@@ -24,12 +24,12 @@ const Reducer = (state = initialState, action) => {
     case "ADD_POSTS":
       return {
         ...state,
-        posts: action.payload,
+        posts: [...state.posts, ...action.payload],
       };
     case "ADD_USERS":
       return {
         ...state,
-        users: action.payload,
+        users: [...state.users, ...action.payload],
       };
 
     default:

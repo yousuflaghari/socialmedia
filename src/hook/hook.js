@@ -19,3 +19,37 @@ export const useGetCommentbyId = (id) => {
   const username = comment?.user?.username;
   return { comment, username };
 };
+
+export const useGetdatetime = () => {
+  const currentDateAndTime = new Date();
+
+  const hours = currentDateAndTime.getHours();
+  const minutes = currentDateAndTime.getMinutes();
+  const amOrPm = hours >= 12 ? "PM" : "AM";
+  const formattedHours = hours % 12 || 12; // Convert to 12-hour format
+
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const month = monthNames[currentDateAndTime.getMonth()];
+  const date = currentDateAndTime.getDate();
+  const year = currentDateAndTime.getFullYear();
+
+  const formattedDateAndTime = `${formattedHours}:${
+    minutes < 10 ? "0" : ""
+  }${minutes} ${amOrPm} - ${month} ${date}, ${year}`;
+
+  console.log(formattedDateAndTime);
+  return { date };
+};
